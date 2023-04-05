@@ -15,3 +15,13 @@ class TestDictionary(unittest.TestCase):
         mock_get.return_value.status_code = 404
         response = get_word_definition('squirrel')
         self.assertEqual(response, 'Word not found')
+
+    @patch('dictioncli.requests.get')
+    def test_get_word_definition_no_definition(self, mock_get):
+        mock_get.return_value.status_code = 200
+        mock_get.return_value.json.return_value = [{'shortdef': []}]
+        response = get_word_definition('squirrel')
+        self.assertEqual(response, 'No definition found')
+
+if __name__ == '__main__':
+    unittest.main()
