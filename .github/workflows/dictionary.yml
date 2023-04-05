@@ -27,7 +27,7 @@ jobs:
           make test
       - name: Lookup word
         run: |
-          make dictionary word=hello
+          make dictionary word=exercise
       - name: Package
         run: |
           make package
