@@ -16,3 +16,12 @@ def get_word_definition(word):
             return 'No definition found'
     else:
         return 'Word not found'
+
+def main():
+    parser = argparse.ArgumentParser(description='Get word definition')
+    parser.add_argument('word', type=str, help='Word to search')
+    args = parser.parse_args()
+    print(get_word_definition(args.word))
+
+if __name__ == '__main__':
+    main()
